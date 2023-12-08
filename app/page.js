@@ -1,95 +1,107 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+
+import MultipleCheckboxes from "@/components/MultipleCheckboxes";
+import TableRadio from "@/components/TableRadio";
+import ShortAnswer from "@/components/ShortAnswer";
+
+import {
+  Typography,
+  Container,
+  FormControl,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  Box,
+} from "@mui/material";
+import { useState } from "react";
 
 export default function Home() {
+  const [puzzleType, setPuzzleType] = useState("multipleCheckboxes");
+
+  const handleTypeChange = () => {
+    setPuzzleType(event.target.value);
+    console.log(puzzleType);
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+    <main>
+      <Container maxWidth="md">
+        <Typography
+          variant="h3"
+          component="h1"
+          align="center"
+          m={4}
+          sx={{ fontWeight: "bold" }}
         >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+          Demo Tipe-tipe Soal UTBK
+        </Typography>
+        {/* Control Tipe Soal */}
+        <Box mb={4}>
+          <FormControl>
+            <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+              Pilih Tipe Soal
+            </Typography>
+            <RadioGroup
+              row
+              aria-labelledby="demo-radio-buttons-group-label"
+              defaultValue="female"
+              name="radio-buttons-group"
+              value={puzzleType}
+              onChange={handleTypeChange}
+            >
+              <FormControlLabel
+                value="multipleCheckboxes"
+                control={<Radio />}
+                label="Multiple Checkboxes"
+              />
+              <FormControlLabel
+                value="tableRadio"
+                control={<Radio />}
+                label="Table Radio"
+              />
+              <FormControlLabel
+                value="shortAnswer"
+                control={<Radio />}
+                label="Short Answer"
+              />
+            </RadioGroup>
+          </FormControl>
+        </Box>
+        {puzzleType === "multipleCheckboxes" && (
+          <Box>
+            <Typography variant="h4" component="h3" sx={{ fontWeight: "bold" }}>
+              Multiple Checkboxes
+            </Typography>
+            <MultipleCheckboxes />
+          </Box>
+        )}
+        {puzzleType === "tableRadio" && (
+          <Box>
+            <Typography
+              variant="h4"
+              component="h3"
+              mt={2}
+              sx={{ fontWeight: "bold" }}
+            >
+              Table Radio
+            </Typography>
+            <TableRadio />
+          </Box>
+        )}
+        {puzzleType === "shortAnswer" && (
+          <Box>
+            <Typography
+              variant="h4"
+              component="h3"
+              mt={2}
+              sx={{ fontWeight: "bold" }}
+            >
+              Short Answer
+            </Typography>
+            <ShortAnswer />
+          </Box>
+        )}
+      </Container>
     </main>
-  )
+  );
 }
