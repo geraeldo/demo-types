@@ -61,6 +61,9 @@ function TableRadio() {
   const handleSecondTableHeadNameChange = (event) => {
     setSecondTableHeadName(event.target.value);
   };
+  const handleThirdTableHeadNameChange = (event) => {
+    setThirdTableHeadName(event.target.value);
+  };
 
   const [rows, setRows] = useState([
     { id: "1", statement: "Kucing adalah mamalia" },
