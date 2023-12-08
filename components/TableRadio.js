@@ -25,6 +25,10 @@ function TableRadio() {
     5: "Salah",
   });
 
+  const [firstTableHeadName, setFirstTableHeadName] = useState("Pernyataan");
+  const [secondTableHeadName, setSecondTableHeadName] = useState("Benar");
+  const [thirdTableHeadName, setThirdTableHeadName] = useState("Salah");
+
   const handleChange = (event, rowId) => {
     setSelectedValues({
       ...selectedValues,
@@ -51,6 +55,13 @@ function TableRadio() {
     setRows(newRows);
   };
 
+  const handleFirstTableHeadNameChange = (event) => {
+    setFirstTableHeadName(event.target.value);
+  };
+  const handleSecondTableHeadNameChange = (event) => {
+    setSecondTableHeadName(event.target.value);
+  };
+
   const [rows, setRows] = useState([
     { id: "1", statement: "Kucing adalah mamalia" },
     { id: "2", statement: "Anjing adalah mamalia" },
@@ -65,7 +76,6 @@ function TableRadio() {
     );
   };
 
-  // Call checkAnswers function to determine if all answers are correct
   const allAnswersCorrect = checkAnswers();
 
   return (
@@ -81,12 +91,29 @@ function TableRadio() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ fontWeight: "bold" }}>Pernyataan</TableCell>
-                <TableCell align="right" sx={{ fontWeight: "bold" }}>
-                  Benar
+                <TableCell sx={{ fontWeight: "bold", width: "60%" }}>
+                  <TextField
+                    value={firstTableHeadName}
+                    onChange={(event) => handleFirstTableHeadNameChange(event)}
+                    variant="outlined"
+                    fullWidth
+                  />
                 </TableCell>
                 <TableCell align="right" sx={{ fontWeight: "bold" }}>
-                  Salah
+                  <TextField
+                    value={secondTableHeadName}
+                    onChange={(event) => handleSecondTableHeadNameChange(event)}
+                    variant="outlined"
+                    fullWidth
+                  />
+                </TableCell>
+                <TableCell align="right" sx={{ fontWeight: "bold" }}>
+                  <TextField
+                    value={thirdTableHeadName}
+                    onChange={(event) => handleThirdTableHeadNameChange(event)}
+                    variant="outlined"
+                    fullWidth
+                  />
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -141,12 +168,14 @@ function TableRadio() {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ fontWeight: "bold" }}>Pernyataan</TableCell>
-                  <TableCell align="right" sx={{ fontWeight: "bold" }}>
-                    Benar
+                  <TableCell sx={{ fontWeight: "bold", width: "60%" }}>
+                    {firstTableHeadName}
                   </TableCell>
                   <TableCell align="right" sx={{ fontWeight: "bold" }}>
-                    Salah
+                    {secondTableHeadName}
+                  </TableCell>
+                  <TableCell align="right" sx={{ fontWeight: "bold" }}>
+                    {thirdTableHeadName}
                   </TableCell>
                 </TableRow>
               </TableHead>
