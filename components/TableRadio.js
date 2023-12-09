@@ -28,6 +28,9 @@ function TableRadio() {
   const [firstTableHeadName, setFirstTableHeadName] = useState("Pernyataan");
   const [secondTableHeadName, setSecondTableHeadName] = useState("Benar");
   const [thirdTableHeadName, setThirdTableHeadName] = useState("Salah");
+  const [pertanyaan, setPertanyaan] = useState(
+    "Tentukan benar atau salah dari pernyataan di bawah ini."
+  );
 
   const handleChange = (event, rowId) => {
     setSelectedValues({
@@ -90,6 +93,18 @@ function TableRadio() {
         >
           Create Soal
         </Typography>
+        <Typography variant="h6">Pertanyaan</Typography>
+        <TextField
+          label="Enter the question here"
+          multiline
+          rows={4}
+          fullWidth
+          margin="normal"
+          variant="outlined"
+          value={pertanyaan}
+          onChange={(event) => setPertanyaan(event.target.value)}
+        />
+        <Typography variant="h6">Jawaban</Typography>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
@@ -163,9 +178,7 @@ function TableRadio() {
         >
           Soal
         </Typography>
-        <Typography variant="body1">
-          Tentukan benar atau salah dari pernyataan di bawah ini.
-        </Typography>
+        <Typography variant="body1">{pertanyaan}</Typography>
         <Box mt={2}>
           <TableContainer component={Paper}>
             <Table>
