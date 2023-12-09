@@ -16,7 +16,7 @@ import {
 import { useState } from "react";
 
 export default function Home() {
-  const [puzzleType, setPuzzleType] = useState("multipleCheckboxes");
+  const [puzzleType, setPuzzleType] = useState("tableRadio");
 
   const handleTypeChange = () => {
     setPuzzleType(event.target.value);
@@ -44,25 +44,24 @@ export default function Home() {
             <RadioGroup
               row
               aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="female"
               name="radio-buttons-group"
               value={puzzleType}
               onChange={handleTypeChange}
             >
               <FormControlLabel
-                value="multipleCheckboxes"
-                control={<Radio />}
-                label="Multiple Checkboxes"
-              />
-              <FormControlLabel
                 value="tableRadio"
                 control={<Radio />}
-                label="Table Radio"
+                label="Majemuk Kompleks"
               />
               <FormControlLabel
                 value="shortAnswer"
                 control={<Radio />}
-                label="Short Answer"
+                label="Isian"
+              />
+              <FormControlLabel
+                value="multipleCheckboxes"
+                control={<Radio />}
+                label="Multiple Checkboxes (ternyata udah gak dipake)"
               />
             </RadioGroup>
           </FormControl>
@@ -83,7 +82,7 @@ export default function Home() {
               mt={2}
               sx={{ fontWeight: "bold" }}
             >
-              Table Radio
+              Majemuk Kompleks
             </Typography>
             <TableRadio />
           </Box>
@@ -96,7 +95,7 @@ export default function Home() {
               mt={2}
               sx={{ fontWeight: "bold" }}
             >
-              Short Answer
+              Isian
             </Typography>
             <ShortAnswer />
           </Box>
