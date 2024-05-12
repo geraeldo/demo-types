@@ -94,6 +94,12 @@ function TagManager() {
           <Link href="/tags-manager/question">Question Page</Link>
         </Typography>
       </Box>
+      <Box
+        component="section"
+        sx={{ height: 500, mt: 5, mb: 5, p: 2, border: "1px dashed grey" }}
+      >
+        EDIT SOAL & PEMBAHASAN
+      </Box>
       <Stack direction="row" spacing={2} marginBottom={2}>
         <Button
           variant="outlined"
