@@ -161,15 +161,6 @@ function TagManager() {
         <DialogContent>
           <TextField
             margin="dense"
-            label="Name"
-            type="text"
-            fullWidth
-            variant="standard"
-            value={editTag?.name}
-            onChange={handleEditChange("name")}
-          />
-          <TextField
-            margin="dense"
             label="Upvotes"
             type="number"
             fullWidth
